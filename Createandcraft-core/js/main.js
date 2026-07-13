@@ -94,10 +94,15 @@ function moveMenu() {
     if (respWidth < 767) {
         jQuery('#menulinks').appendTo('#mobile-menulinks');
         jQuery('#categories').appendTo('#mobile-categories');
+        jQuery('#mobile-categories .dropdown > a').off('click.mobilenav').on('click.mobilenav', function (e) {
+            e.stopPropagation();
+            window.location.href = this.href;
+        });
     }
     else {
         jQuery('#menulinks').appendTo('#menulinks-outer');
         jQuery('#categories').appendTo('#navbar');
+        jQuery('#mobile-categories .dropdown > a').off('click.mobilenav');
     }
 }
 
